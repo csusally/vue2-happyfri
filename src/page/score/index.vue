@@ -100,8 +100,8 @@ export default {
         width: 6.025rem;
         height: 2.4rem;
         margin: 0.8rem auto 0;
-        background: url(../../images/4-3.png) no-repeat 0.4rem 0;
-        background-size: 5.825rem 100%;
+        background: url(../../images/4-3.png) no-repeat 0.4rem 0 ;
+        background-size: 6.025rem 100%;
     }
     .share_code{
         width: 5.3rem;

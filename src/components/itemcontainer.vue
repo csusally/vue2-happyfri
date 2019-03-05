@@ -9,6 +9,7 @@
     		<router-link to="item" class="start button_style" ></router-link>
     	</div>
     	<div v-if="fatherComponent == 'item'" >
+			<p style="color: blue; background: #fff;">用时：{{allTime}}</p>
     		<div class="item_back item_container_style">
     			<div class="item_list_container" v-if="itemDetail.length > 0">
     				<header class="item_title">{{itemDetail[itemNum-1].topic_name}}</header>
@@ -42,7 +43,9 @@ export default {
 	  	'itemNum', //第几题
   		'level', //第几周
   		'itemDetail', //题目详情
-  		'timer', //计时器
+		'timer', //计时器
+		'allTime', //总用时
+		  
 	]),
   	methods: {
   		...mapActions([
@@ -75,8 +78,11 @@ export default {
 	  	//到达最后一题，交卷，请空定时器，跳转分数页面
 	  	submitAnswer(){
 	  		if (this.choosedNum !== null) {
-	  			this.addNum(this.choosedId)
-	  			clearInterval(this.timer)
+				  this.addNum(this.choosedId)
+				  
+				  clearInterval(this.timer)
+				  this.initializeData()
+				  
 	  			this.$router.push('score')
   			}else{
   				alert('您还没有选择答案哦')
@@ -86,8 +92,10 @@ export default {
 	created(){
 		//初始化信息
 		if(this.fatherComponent == 'home') {
-			this.initializeData();
+			clearInterval(this.timer)
+			this.initializeData()
 			document.body.style.backgroundImage = 'url(./static/img/1-1.jpg)';
+			console.log(mapState)
 		}
 	}
 }

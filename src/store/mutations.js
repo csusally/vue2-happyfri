@@ -26,5 +26,6 @@ export default {
 		state.itemNum = 1;
 		state.allTime = 0;
 		state.answerid = [];
+		state.timer = ''
 	},
 }
